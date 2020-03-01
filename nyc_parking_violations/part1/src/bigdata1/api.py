@@ -43,7 +43,7 @@ metadata = client.get_metadata(dataset_id)
 [x['name'] for x in metadata['columns']]
 
 # Define the function to call the output
-def get_results(page_size, num_pages, output) -> dict:
+def get_results(page_size, num_pages = None, output = None) -> dict:
 
     # Define the num_pages in case the default value is not passed
     if not num_pages:
@@ -59,10 +59,10 @@ def get_results(page_size, num_pages, output) -> dict:
             print(records)
 
             # Print the records in an output file
-            with open("output", "w") as file:
-                for i in range(num_pages):
+            if output is not None:
+                with open(output, "a") as file:
                     for j in records:
-                        file.write(f"{j}\n")
+                        file.write(f"{json.dumps(j)}\n")
 
     except HTTPError as e:
         print(f"Evaluate the loops again!: {e}")
@@ -92,4 +92,4 @@ def raise_for_status(response):
             more_info = None
         if more_info and more_info.lower() != response.reason.lower():
             http_error_msg += ".\n\t{0}".format(more_info)
-        raise requests.exceptions.HTTPError(http_error_msg, response=response)   
+        raise requests.exceptions.HTTPError(http_error_msg, response=response)
