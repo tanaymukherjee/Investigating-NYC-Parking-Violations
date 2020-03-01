@@ -130,6 +130,36 @@ sudo docker run -v ${PWD}:/app/out -e APP_TOKEN=${APP_TOKEN}  -it tanaydocker/bi
 ```
 
 #### 5. Verify results:
+* ```Total Rows```
+```
+results_all = int(client.get(dataset_id, select='COUNT(*)')[0]['COUNT'])
+48782608
+```
+* ```Print the metadat to see the API structure```
+```
+metadata = client.get_metadata(dataset_id)
+[x['name'] for x in metadata['columns']]
+
+['Plate',
+ 'State',
+ 'License Type',
+ 'Summons Number',
+ 'Issue Date',
+ 'Violation Time',
+ 'Violation',
+ 'Judgment Entry Date',
+ 'Fine Amount',
+ 'Penalty Amount',
+ 'Interest Amount',
+ 'Reduction Amount',
+ 'Payment Amount',
+ 'Amount Due',
+ 'Precinct',
+ 'County',
+ 'Issuing Agency',
+ 'Violation Status',
+ 'Summons Image']
+```
 * ```Check content```
 ```
 cat results.json | wc -l  && cat results.json
