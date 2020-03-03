@@ -92,6 +92,10 @@ docker tag <UUID image> tanaydocker/bigdata1:2.0
 ```
 docker push tanaydocker/bigdata1
 ```
+* ```Link to the docker hub```
+```
+https://hub.docker.com/repository/docker/tanaydocker/bigdata1
+```
 
 #### 3. SSH into AWS EC2:
 * ```Set permissions for the .pem file```
@@ -118,7 +122,7 @@ sudo docker pull tanaydocker/bigdata1:2.0
 ```
 * ```Set the APP_TOKEN```
 ```
-export APP_TOKEN=<Your token>
+export APP_TOKEN=<Your api_token>
 ```
 * ```Docker run on /bin/bash```
 ```
