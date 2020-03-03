@@ -118,7 +118,7 @@ sudo docker pull tanaydocker/bigdata1:2.0
 ```
 * ```Set the APP_TOKEN```
 ```
-export APP_TOKEN=398zkEPImMbqVGZbjdmMD4bEp
+export APP_TOKEN=<Your token>
 ```
 * ```Docker run on /bin/bash```
 ```
