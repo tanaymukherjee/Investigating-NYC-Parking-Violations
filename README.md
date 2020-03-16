@@ -22,7 +22,7 @@ The code can be found in this repository under nyc_parking_violations
 
 * ```api.py```
 ``` 
-It has all the fucntions and error handling code to implement the exercise. 
+It has all the functions and error handling code to implement the exercise. 
 The APP Token, domain, etc are also defined here alongside necessary packages.
 The code can be found in this repository under nyc_parking_violations > src > bigdata 1
 ```
@@ -194,7 +194,88 @@ cat results.json | wc -l  && cat results.json
 - [x] This module is completed
 
 ## Part 2: Loading into ElasticSearch
-- [ ] This module is under progress
+```
+In this second part, we want to leverage docker-compose to bring up a service that encapsulates our bigdata1 container and an  elasticsearch container and ensures that they are able to interact. 
+```
+
+### A) File Structure
+-- the image link goes here
+
+### B) Associated Files
+
+#### 1. Python Scripting Files:
+* ```main.py```
+``` 
+It parses the arguments --page_size, --num_pages, --output -- elastic_search into the api.py file for function call.
+The code can be found in this repository under nyc_parking_violations
+```
+
+* ```api.py```
+``` 
+It has all the functions and error handling code to implement the exercise. 
+The APP Token, domain, etc are also defined here alongside necessary packages.
+The code can be found in this repository under nyc_parking_violations > src > bigdata 1
+```
+
+* ```elasticsearch.py```
+``` 
+It has all the functions to create the necessary instance for elastic search module. 
+The data formatting related tasks are also accomplished here.
+The code can be found in this repository under nyc_parking_violations > src > bigdata 1
+```
+
+#### 2. Supplementary Files:
+* ```Docker File```
+``` 
+Same content as part 1.
+```
+
+* ```Requirements.txt```
+``` 
+Only updated from part 1 here is an additional exercise to install elasticsearch.
+```
+
+* ```docker-compose.yml```
+``` 
+Docker-compose is a tool for defining and running multi-container Docker applications. With Compose, we use a YAML/YML file to configure our application's services.
+
+NOTE: Remember, docker-compose. yml files are used for defining and running multi-container Docker applications, whereas Dockerfiles are simple text files that contain the commands to assemble an image that will be used to deploy containers.
+```
+
+#### 3. Output:
+* ```results.json```
+``` 
+This is our main output which shows the json output we have called from the API.
+It will store as many rows we pass as part of our arguments - num_pages and pages_size.
+It is located in the root directory of our project.
+```
+
+### C) Commands
+
+#### 1. Docker-Compose Build:
+* ```Clean all the previous images```
+``` 
+docker system prune -a
+```
+* ```Set up the necessary JVM heap memory for the exercise```
+```
+docker-machine ssh
+```
+```
+sudo sysctl -w vm.max_map_count=262144
+```
+```
+exit
+```
+```
+NOTE: This step is optional for people who have issues with elastic search image dying within seconds of us initiating docker-compose.
+```
+* ```Get IP address of the docker```
+```
+docker inspect -f "{{ .NetworkSettings.IPAddress }}" <containerNameOrId>
+```
+
+- [x] This module is under progress
 
 ## Part 3: Visualizing and Analysis on Kibana
 - [ ] This module is yet to be started
