@@ -347,10 +347,20 @@ Go to: http://<docker's ip>:5601/
 The user interface of Kibana module.
 ```
 
-- [x] This module is under progress
+#### 4. Push into Elastic Search
+* ```Run the service```
+``` 
+docker-compose run -v $(pwd):/app -e APP_TOKEN=<api_token> pyth python -m main --page_size=50 --num_pages=100 --output=results.json --push_elastic=True
+```
+* ```Load the data using curl```
+``` 
+$ curl -o output.txt http://<docker's ip>:9200/bigdata1/_search?q=state:NY&size=5 
+```
+
+- [x] This module is completed
 
 ## Part 3: Visualizing and Analysis on Kibana
-- [ ] This module is yet to be started
+- [x] This module is under progress
 
 ## Part 4: Deploying to EC2 Instance
 - [ ] This module is yet to be started
