@@ -252,7 +252,7 @@ It is located in the root directory of our project.
 
 ### C) Commands
 
-#### 1. Docker-Compose Build:
+#### 1. Docker-Compose Build Pre-requisites:
 * ```Clean all the previous images```
 ``` 
 docker system prune -a
@@ -273,6 +273,78 @@ NOTE: This step is optional for people who have issues with elastic search image
 * ```Get IP address of the docker```
 ```
 docker inspect -f "{{ .NetworkSettings.IPAddress }}" <containerNameOrId>
+```
+
+#### 2. Docker-Compose Build:
+* ```Build the Pyth, Elastic Search and Kibana instances```
+``` 
+docker-compose build pyth
+```
+* ```Launch the above services in detach mode```
+```
+docker-compose up -d
+```
+* ```Check if the services are up and ruuning?```
+```
+docker ps -a
+```
+* ```Check logs to see if Elastic Search is ready via localhost/docker's IP address```
+```
+docker-compose logs elasticsearch
+```
+```
+NOTE: It takes the system good 2-4 minutes to get the services running. We can continue to monitor the log and see if that has
+any error. If all goes fine, in some time the logs will show - services being initiated and then display the running status.
+```
+* ```To kill the services```
+```
+docker-compose down
+```
+
+#### 3. Verify the build and successful logins into Elastic Search and Kibana:
+* ```Verifying the build status```
+``` 
+docker-compose run pyth bash
+```
+* ```Verfiy Elastic search via curl```
+``` 
+curl <docker's ip>:9200
+```
+* ```Verfiy Elastic search via broswer```
+``` 
+Go to: http://<docker's ip>:9200/
+```
+* ```Result from Elastic Search Instance on successful ping at the server```
+``` 
+{
+  "name" : "qRCd9Tu",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "ZVOIVq7WQhqQ6ckxbjX-Lw",
+  "version" : {
+    "number" : "6.3.2",
+    "build_flavor" : "default",
+    "build_type" : "tar",
+    "build_hash" : "053779d",
+    "build_date" : "2018-07-20T05:20:23.451332Z",
+    "build_snapshot" : false,
+    "lucene_version" : "7.3.1",
+    "minimum_wire_compatibility_version" : "5.6.0",
+    "minimum_index_compatibility_version" : "5.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
+* ```Verfiy Kibana via curl```
+``` 
+curl <docker's ip>:5601
+```
+* ```Verfiy Kibana via broswer```
+``` 
+Go to: http://<docker's ip>:5601/
+```
+* ```Result from Kibana Instance on successful ping at the server```
+```
+The user interface of Kibana module.
 ```
 
 - [x] This module is under progress
