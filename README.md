@@ -199,7 +199,7 @@ In this second part, we want to leverage docker-compose to bring up a service th
 ```
 
 ### A) File Structure
--- the image link goes here
+![Tree_2](https://user-images.githubusercontent.com/6689256/76740778-ccd26900-6744-11ea-9f44-38f961639f1c.PNG)
 
 ### B) Associated Files
 
