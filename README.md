@@ -268,7 +268,7 @@ sudo sysctl -w vm.max_map_count=262144
 exit
 ```
 ```
-NOTE: This step is optional for people who have issues with elastic search image dying within seconds of us initiating docker-compose.
+NOTE: This step is optional for people who have issues with elastic search image dying within seconds of initiating docker-compose build.
 ```
 * ```Get IP address of the docker```
 ```
