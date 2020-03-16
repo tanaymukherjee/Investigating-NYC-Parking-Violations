@@ -194,7 +194,7 @@ cat results.json | wc -l  && cat results.json
 - [x] This module is completed
 
 ## Part 2: Loading into ElasticSearch
-- [ ] This module is yet to be started
+- [ ] This module is under progress
 
 ## Part 3: Visualizing and Analysis on Kibana
 - [ ] This module is yet to be started
