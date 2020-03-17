@@ -389,51 +389,40 @@ docker-compose run -e APP_TOKEN=3<api_token> pyth python main.py --page_size=100
 
 #### 1. Initial Configuration:
 * ```Create index pattern```
-``` 
 ![kibana step 1](https://user-images.githubusercontent.com/6689256/76834130-ffdb3200-6802-11ea-9c06-eafc14f13344.png)
-```
+
 * ```Configure Settings```
-``` 
 ![kibana step 2](https://user-images.githubusercontent.com/6689256/76834158-09fd3080-6803-11ea-93aa-f24dcceef162.png)
-```
+
 * ```Discover the field and metrics for the index pattern via 'Discover' for 1 million records pushed via Elastic Search```
-``` 
 ![kibana_discover_1 million records](https://user-images.githubusercontent.com/6689256/76834192-1a151000-6803-11ea-86c2-0b5064c84ea4.png)
-```
+
 
 #### 2. All Charts:
 * ```Line Chart: Average Change by Month```
-``` 
 ![Line Chart](https://user-images.githubusercontent.com/6689256/76834464-9c9dcf80-6803-11ea-886a-7d24b6fa1d49.png)
-```
+
 * ```Table View: Different Amounts by Year```
-``` 
-![Table View](https://user-images.githubusercontent.com/6689256/76834547-c22ad900-6803-11ea-9cf5-eb151a8a860a.png)
-```
+![Table View](https://user-images.githubusercontent.com/6689256/76837154-6a42a100-6808-11ea-9714-a983e87b14f0.png)
+
 * ```Heatmap: Top States by Penalty Amount```
-``` 
 ![Heatmap](https://user-images.githubusercontent.com/6689256/76834602-dcfd4d80-6803-11ea-8b44-867c71ea086d.png)
-```
+
 * ```Area Chart: Average Amount for Different Amounts```
-``` 
-![Area Chart](https://user-images.githubusercontent.com/6689256/76834667-f69e9500-6803-11ea-9bc6-c7e5d36f93d2.png)
-```
+![Area Chart](https://user-images.githubusercontent.com/6689256/76837134-6151cf80-6808-11ea-8d5a-b7fd0bec57de.png)
+
 * ```Word Cloud: Violation Keywords in NYC```
-``` 
 ![Word Cloud](https://user-images.githubusercontent.com/6689256/76834739-0ddd8280-6804-11ea-86fd-539fb32e693e.png)
-```
+
 * ```Pie Chart: Top 20 states by Shares of Summons```
-``` 
 ![Pie Chart](https://user-images.githubusercontent.com/6689256/76834771-1d5ccb80-6804-11ea-88cb-f10ad0914186.png)
-```
 
 #### 3. Dashboard:
 * ```Top Line Overview of NYC Parking Violations```
-``` 
-![Line Chart](https://user-images.githubusercontent.com/6689256/76834464-9c9dcf80-6803-11ea-886a-7d24b6fa1d49.png)
-```
+![Dashboard](https://user-images.githubusercontent.com/6689256/76836977-19cb4380-6808-11ea-9590-0d9cc617f075.png)
+
 
 - [x] This module is completed
 
 ## Part 4: Deploying to EC2 Instance
-- [ ] This module is yet to be started and is optional.
+- [ ] This module is yet to be started and is optional
