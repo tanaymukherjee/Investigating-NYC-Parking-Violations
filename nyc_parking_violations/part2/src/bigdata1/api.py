@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from sodapy import Socrata
 import requests
+from requests import HTTPError
 import json
 from datetime import datetime
 from src.bigdata1.elasticsearch import create_and_update_index, call_ref
@@ -47,7 +48,7 @@ metadata = client.get_metadata(dataset_id)
 [x['name'] for x in metadata['columns']]
 
 # Define the function to call the output
-def get_results(page_size, num_pages = None, output = None, elastic_search) -> dict:
+def get_results(page_size, num_pages = None, output = None, elastic_search = None) -> dict:
 
     # Define the num_pages in case the default value is not passed
     if not num_pages:
@@ -71,8 +72,9 @@ def get_results(page_size, num_pages = None, output = None, elastic_search) -> d
                     for j in records:
                         file.write(f"{json.dumps(j)}\n")
 
+            # Load the data into elastic search
             if elastic_search:
-                call_ref(ref, es, 'bigdata1')
+                call_ref(j, es, 'bigdata1')
 
     except HTTPError as e:
         print(f"Evaluate the loops again!: {e}")
@@ -102,4 +104,4 @@ def raise_for_status(response):
             more_info = None
         if more_info and more_info.lower() != response.reason.lower():
             http_error_msg += ".\n\t{0}".format(more_info)
-        raise requests.exceptions.HTTPError(http_error_msg, response=response)   
+        raise requests.exceptions.HTTPError(http_error_msg, response=response)
