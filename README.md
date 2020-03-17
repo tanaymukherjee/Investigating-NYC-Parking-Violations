@@ -421,9 +421,17 @@ docker-compose run -e APP_TOKEN=3<api_token> pyth python main.py --page_size=100
 * ```Pie Chart: Top 20 states by Shares of Summons```
 ![Pie Chart](https://user-images.githubusercontent.com/6689256/76838064-015c2880-680a-11ea-8fe0-f98729e09e88.png)
 
+
 #### 3. Dashboard:
 * ```Top Line Overview of NYC Parking Violations```
 ![Dashboard](https://user-images.githubusercontent.com/6689256/76836977-19cb4380-6808-11ea-9590-0d9cc617f075.png)
+
+
+#### 4. Deploying via Docker Hub:
+* ```Link to the docker hub for part 2 and part3```
+```
+https://hub.docker.com/repository/docker/tanaydocker/pyth
+```
 
 - [x] This module is completed
 
