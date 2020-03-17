@@ -10,7 +10,7 @@ from elasticsearch import Elasticsearch
 from time import sleep
 
 # Creating an index and adding documents
-def create_and_update_index(index_name, doc_type):
+def create_and_update_index(index_name):
     es = Elasticsearch()
     try:
         es.indices.create(index=index_name)
@@ -29,7 +29,7 @@ def data_formatting(ref):
         if 'amount' in key:
             ref[key] = float(value)
         elif 'number' in key:
-            item[key] = int(value)            
+            ref[key] = int(value)            
         elif 'date' in key:
             ref[key] = datetime.strptime(ref[key], '%m/%d/%Y').date()
 
