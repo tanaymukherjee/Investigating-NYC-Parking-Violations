@@ -353,7 +353,11 @@ docker-compose run -e APP_TOKEN=3<api_token> pyth python main.py --page_size=5 -
 ```
 * ```Load the data using curl```
 ``` 
-$ curl -o output.txt http://<docker's ip>:9200/bigdata1/_search?q=state:NY&size=5 
+curl -o output.txt http://<docker's ip>:9200/bigdata1/_search?q=state:NY&size=5 
+```
+* ```Output via curl```
+``` 
+{"took":101,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":6,"max_score":0.6931472,"hits":[{"_index":"bigdata1","_type":"_doc","_id":"8349526865","_score":0.6931472,"_source":{"plate":"GWH9469","state":"NY","license_type":"PAS","summons_number":8349526865,"issue_date":"2016-09-13","violation_time":"10:02A","violation":"INSP. STICKER-EXPIRED/MISSING","judgment_entry_date":"2016-12-29","fine_amount":65.0,"penalty_amount":60.0,"interest_amount":8.91,"reduction_amount":2.61,"payment_amount":131.3,"amount_due":0.0,"precinct":"032","county":"NY","issuing_agency":"TRAFFIC","summons_image":{"url":"http://nycserv.nyc.gov/NYCServWeb/ShowImage?searchID=VDBSTk1FOVVWWGxPYW1jeVRsRTlQUT09&locationName=_____________________","description":"View Summons"}}},{"_index":"bigdata1","_type":"_doc","_id":"8487142308","_score":0.6931472,"_source":{"plate":"42274JZ","state":"NY","license_type":"COM","summons_number":8487142308,"issue_date":"2017-04-11","violation_time":"02:35P","violation":"FAIL TO DSPLY MUNI METER RECPT","fine_amount":35.0,"penalty_amount":0.0,"interest_amount":0.0,"reduction_amount":15.0,"payment_amount":20.0,"amount_due":0.0,"precinct":"108","county":"Q","issuing_agency":"TRAFFIC","violation_status":"HEARING HELD-GUILTY REDUCTION","summons_image":{"url":"http://nycserv.nyc.gov/NYCServWeb/ShowImage?searchID=VDBSUk5FNTZSVEJOYWsxM1QwRTlQUT09&locationName=_____________________","description":"View Summons"}}},{"_index":"bigdata1","_type":"_doc","_id":"8612879700","_score":0.35667494,"_source":{"plate":"HRZ6089","state":"NY","license_type":"PAS","summons_number":8612879700,"issue_date":"2018-05-09","violation_time":"09:44A","violation":"INSP. STICKER-EXPIRED/MISSING","judgment_entry_date":"2018-08-23","fine_amount":65.0,"penalty_amount":60.0,"interest_amount":17.66,"reduction_amount":0.0,"payment_amount":0.0,"amount_due":142.66,"precinct":"069","county":"K","issuing_agency":"TRAFFIC","summons_image":{"url":"http://nycserv.nyc.gov/NYCServWeb/ShowImage?searchID=VDBSWmVFMXFaek5QVkdOM1RVRTlQUT09&locationName=_____________________","description":"View Summons"}}},{"_index":"bigdata1","_type":"_doc","_id":"8612880026","_score":0.35667494,"_source":{"plate":"T735621C","state":"NY","license_type":"OMT","summons_number":8612880026,"issue_date":"2018-05-12","violation_time":"06:23A","violation":"FIRE HYDRANT","judgment_entry_date":"2018-09-13","fine_amount":115.0,"penalty_amount":60.0,"interest_amount":23.21,"reduction_amount":0.0,"payment_amount":0.0,"amount_due":198.21,"precinct":"061","county":"K","issuing_agency":"TRAFFIC","summons_image":{"url":"http://nycserv.nyc.gov/NYCServWeb/ShowImage?searchID=VDBSWmVFMXFaelJOUkVGNVRtYzlQUT09&locationName=_____________________","description":"View Summons"}}},{"_index":"bigdata1","_type":"_doc","_id":"8487142450","_score":0.35667494,"_source":{"plate":"GWG7210","state":"NY","license_type":"PAS","summons_number":8487142450,"issue_date":"2017-04-11","violation_time":"05:35P","violation":"EXPIRED MUNI METER","fine_amount":35.0,"penalty_amount":0.0,"interest_amount":0.0,"reduction_amount":0.0,"payment_amount":35.0,"amount_due":0.0,"precinct":"115","county":"Q","issuing_agency":"TRAFFIC","summons_image":{"url":"http://nycserv.nyc.gov/NYCServWeb/ShowImage?searchID=VDBSUk5FNTZSVEJOYWxFeFRVRTlQUT09&locationName=_____________________","description":"View Summons"}}},{"_index":"bigdata1","_type":"_doc","_id":"8090011093","_score":0.2876821,"_source":{"plate":"88653MG","state":"NY","license_type":"COM","summons_number":8090011093,"issue_date":"2016-08-24","violation_time":"08:15A","violation":"BIKE LANE","fine_amount":115.0,"penalty_amount":0.0,"interest_amount":0.0,"reduction_amount":10.0,"payment_amount":105.0,"amount_due":0.0,"precinct":"009","county":"NY","issuing_agency":"TRAFFIC","violation_status":"HEARING HELD-GUILTY REDUCTION","summons_image":{"url":"http://nycserv.nyc.gov/NYCServWeb/ShowImage?searchID=VDBSQk5VMUVRWGhOVkVFMVRYYzlQUT09&locationName=_____________________","description":"View Summons"}}}]}}
 ```
 
 - [x] This module is completed
@@ -394,7 +398,7 @@ docker-compose run -e APP_TOKEN=3<api_token> pyth python main.py --page_size=100
 * ```Configure Settings```
 ![kibana step 2](https://user-images.githubusercontent.com/6689256/76834158-09fd3080-6803-11ea-93aa-f24dcceef162.png)
 
-* ```Discover the field and metrics for the index pattern via 'Discover' for 1 million records pushed via Elastic Search```
+* ```Discover the field and metrics for the index pattern for 1 million records pushed via Elastic Search```
 ![kibana_discover_1 million records](https://user-images.githubusercontent.com/6689256/76834192-1a151000-6803-11ea-86c2-0b5064c84ea4.png)
 
 
@@ -409,18 +413,17 @@ docker-compose run -e APP_TOKEN=3<api_token> pyth python main.py --page_size=100
 ![Heatmap](https://user-images.githubusercontent.com/6689256/76834602-dcfd4d80-6803-11ea-8b44-867c71ea086d.png)
 
 * ```Area Chart: Average Amount for Different Amounts```
-![Area Chart](https://user-images.githubusercontent.com/6689256/76837134-6151cf80-6808-11ea-8d5a-b7fd0bec57de.png)
+![Area Chart](https://user-images.githubusercontent.com/6689256/76838724-b68ee080-680a-11ea-8ad4-d6e4155fc5fa.png)
 
 * ```Word Cloud: Violation Keywords in NYC```
 ![Word Cloud](https://user-images.githubusercontent.com/6689256/76834739-0ddd8280-6804-11ea-86fd-539fb32e693e.png)
 
 * ```Pie Chart: Top 20 states by Shares of Summons```
-![Pie Chart](https://user-images.githubusercontent.com/6689256/76834771-1d5ccb80-6804-11ea-88cb-f10ad0914186.png)
+![Pie Chart](https://user-images.githubusercontent.com/6689256/76838064-015c2880-680a-11ea-8fe0-f98729e09e88.png)
 
 #### 3. Dashboard:
 * ```Top Line Overview of NYC Parking Violations```
 ![Dashboard](https://user-images.githubusercontent.com/6689256/76836977-19cb4380-6808-11ea-9590-0d9cc617f075.png)
-
 
 - [x] This module is completed
 
