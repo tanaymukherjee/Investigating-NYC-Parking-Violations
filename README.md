@@ -436,4 +436,4 @@ docker-compose run -e APP_TOKEN=3<api_token> pyth python main.py --page_size=100
 - [x] This module is completed
 
 ## Part 4: Deploying to EC2 Instance
-- [ ] This module is yet to be started and is optional
+- [ ] This module is yet to be started and is optional.
