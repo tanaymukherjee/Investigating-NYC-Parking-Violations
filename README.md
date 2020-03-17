@@ -232,7 +232,7 @@ Same content as part 1.
 
 * ```Requirements.txt```
 ``` 
-Only updated from part 1 here is an additional exercise to install elasticsearch.
+Only update from part 1 here is an additional exercise to install elasticsearch.
 ```
 
 * ```docker-compose.yml```
@@ -248,16 +248,23 @@ NOTE: Remember, docker-compose. yml files are used for defining and running mult
 This is our main output which shows the json output we have called from the API.
 It will store as many rows we pass as part of our arguments - num_pages and pages_size.
 It is located in the root directory of our project.
+This is a sample to the 1 million records we will try to push into elastic searcg later.
 ```
 
 ### C) Commands
 
-#### 1. Docker-Compose Build Pre-requisites:
+#### 1. Setting up docker:
 * ```Clean all the previous images```
 ``` 
 docker system prune -a
 ```
-* ```Set up the necessary JVM heap memory for the exercise```
+* ```Allocate memory to docker for uploading large volume of data in Kibana```
+```
+docker-machine rm default
+docker-machine create -d virtualbox --virtualbox-cpu-count=2 --virtualbox-memory=4096 --virtualbox-disk-size=50000 default
+docker-machine stop
+```
+* ```Set up the necessary JVM heap memory for the Elastic Search```
 ```
 docker-machine ssh
 sudo sysctl -w vm.max_map_count=262144
@@ -292,12 +299,20 @@ docker-compose logs elasticsearch
 NOTE: It takes the system good 2-4 minutes to get the services running. We can continue to monitor the log and see if that has
 any error. If all goes fine, in some time the logs will show - services being initiated and then display the running status.
 ```
+* ```Check logs to see if Kibana is ready via localhost/docker's IP address```
+```
+docker-compose logs kibana
+```
+```
+NOTE: It takes the system good 2-4 minutes to get the services running. We can continue to monitor the log and see if that has
+any error. If all goes fine, in some time the logs will show - kibana up and is connected to the elastic search instance.
+```
 * ```To kill the services```
 ```
 docker-compose down
 ```
 
-#### 3. Verify the build and successful logins into Elastic Search and Kibana:
+#### 3. Verify the build and successful logins into Elastic Search:
 * ```Verifying the build status```
 ``` 
 docker-compose run pyth bash
@@ -330,6 +345,27 @@ Go to: http://<docker's ip>:9200/
   "tagline" : "You Know, for Search"
 }
 ```
+
+#### 4. Push into Elastic Search
+* ```Run the service```
+``` 
+docker-compose run -e APP_TOKEN=3<api_token> pyth python main.py --page_size=5 --num_pages=10 --output=results.json --elastic_search=True
+```
+* ```Load the data using curl```
+``` 
+$ curl -o output.txt http://<docker's ip>:9200/bigdata1/_search?q=state:NY&size=5 
+```
+
+- [x] This module is completed
+
+## Part 3: Visualizing and Analysis on Kibana
+```
+Kibana is an open source data visualization dashboard for Elasticsearch. It provides visualization capabilities on top of the content indexed on an Elasticsearch cluster. Users can create bar, line and scatter plots, or pie charts and maps on top of large volumes of data. Fianlly all the visualizations can be together put up as a dashboard
+```
+
+### A) Commands
+
+#### 1. Verify the build and successful logins into Kibana:
 * ```Verfiy Kibana via curl```
 ``` 
 curl <docker's ip>:5601
@@ -340,23 +376,64 @@ Go to: http://<docker's ip>:5601/
 ```
 * ```Result from Kibana Instance on successful ping at the server```
 ```
-The user interface of Kibana module.
+The user interface of Kibana module. Check for "kibana homepage.png" inside the folder - part 3.
 ```
 
-#### 4. Push into Elastic Search
+#### 2. Push 1 Millions records into Kibana via Elastic Search
 * ```Run the service```
 ``` 
-docker-compose run -v $(pwd):/app -e APP_TOKEN=<api_token> pyth python -m main --page_size=50 --num_pages=100 --output=results.json --push_elastic=True
+docker-compose run -e APP_TOKEN=3<api_token> pyth python main.py --page_size=1000 --num_pages=1000 --output=results.json --elastic_search=True
 ```
-* ```Load the data using curl```
+
+### B) Set Up Kibana and visualize the data
+
+#### 1. Initial Configuration:
+* ```Create index pattern```
 ``` 
-$ curl -o output.txt http://<docker's ip>:9200/bigdata1/_search?q=state:NY&size=5 
+![kibana step 1](https://user-images.githubusercontent.com/6689256/76834130-ffdb3200-6802-11ea-9c06-eafc14f13344.png)
+```
+* ```Configure Settings```
+``` 
+![kibana step 2](https://user-images.githubusercontent.com/6689256/76834158-09fd3080-6803-11ea-93aa-f24dcceef162.png)
+```
+* ```Discover the field and metrics for the index pattern via 'Discover' for 1 million records pushed via Elastic Search```
+``` 
+![kibana_discover_1 million records](https://user-images.githubusercontent.com/6689256/76834192-1a151000-6803-11ea-86c2-0b5064c84ea4.png)
+```
+
+#### 2. All Charts:
+* ```Line Chart: Average Change by Month```
+``` 
+![Line Chart](https://user-images.githubusercontent.com/6689256/76834464-9c9dcf80-6803-11ea-886a-7d24b6fa1d49.png)
+```
+* ```Table View: Different Amounts by Year```
+``` 
+![Table View](https://user-images.githubusercontent.com/6689256/76834547-c22ad900-6803-11ea-9cf5-eb151a8a860a.png)
+```
+* ```Heatmap: Top States by Penalty Amount```
+``` 
+![Heatmap](https://user-images.githubusercontent.com/6689256/76834602-dcfd4d80-6803-11ea-8b44-867c71ea086d.png)
+```
+* ```Area Chart: Average Amount for Different Amounts```
+``` 
+![Area Chart](https://user-images.githubusercontent.com/6689256/76834667-f69e9500-6803-11ea-9bc6-c7e5d36f93d2.png)
+```
+* ```Word Cloud: Violation Keywords in NYC```
+``` 
+![Word Cloud](https://user-images.githubusercontent.com/6689256/76834739-0ddd8280-6804-11ea-86fd-539fb32e693e.png)
+```
+* ```Pie Chart: Top 20 states by Shares of Summons```
+``` 
+![Pie Chart](https://user-images.githubusercontent.com/6689256/76834771-1d5ccb80-6804-11ea-88cb-f10ad0914186.png)
+```
+
+#### 3. Dashboard:
+* ```Top Line Overview of NYC Parking Violations```
+``` 
+![Line Chart](https://user-images.githubusercontent.com/6689256/76834464-9c9dcf80-6803-11ea-886a-7d24b6fa1d49.png)
 ```
 
 - [x] This module is completed
 
-## Part 3: Visualizing and Analysis on Kibana
-- [x] This module is under progress
-
 ## Part 4: Deploying to EC2 Instance
-- [ ] This module is yet to be started
+- [ ] This module is yet to be started and is optional
