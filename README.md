@@ -260,11 +260,7 @@ docker system prune -a
 * ```Set up the necessary JVM heap memory for the exercise```
 ```
 docker-machine ssh
-```
-```
 sudo sysctl -w vm.max_map_count=262144
-```
-```
 exit
 ```
 ```
