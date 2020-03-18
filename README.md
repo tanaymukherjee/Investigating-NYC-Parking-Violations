@@ -349,7 +349,7 @@ Go to: http://<docker's ip>:9200/
 #### 4. Push into Elastic Search
 * ```Run the service```
 ``` 
-docker-compose run -e APP_TOKEN=3<api_token> pyth python main.py --page_size=5 --num_pages=10 --output=results.json --elastic_search=True
+docker-compose run -e APP_TOKEN=<api_token> pyth python main.py --page_size=5 --num_pages=10 --output=results.json --elastic_search=True
 ```
 * ```Load the data using curl```
 ``` 
@@ -386,7 +386,7 @@ The user interface of Kibana module. Check for "kibana homepage.png" inside the 
 #### 2. Push 1 Millions records into Kibana via Elastic Search
 * ```Run the service```
 ``` 
-docker-compose run -e APP_TOKEN=3<api_token> pyth python main.py --page_size=1000 --num_pages=1000 --output=results.json --elastic_search=True
+docker-compose run -e APP_TOKEN=<api_token> pyth python main.py --page_size=1000 --num_pages=1000 --output=results.json --elastic_search=True
 ```
 
 ### B) Set Up Kibana and visualize the data
