@@ -432,7 +432,7 @@ docker-compose run -e APP_TOKEN=<api_token> pyth python main.py --page_size=1000
 #### 4. Deploying via Docker Hub:
 * ```Link to the docker hub for part 2 and part3```
 ```
-[]https://hub.docker.com/repository/docker/tanaydocker/pyth
+https://hub.docker.com/repository/docker/tanaydocker/pyth
 ```
 
 - [x] This module is completed
@@ -499,10 +499,8 @@ Session: Spring, 2020
 ```
 
 #### 2. Links
-``` 
-[Argument Parsing in Python](https://pymotw.com/2/argparse/)
-[Working with JSON in Python](https://realpython.com/python-json/)
-[Mastering Github Markdown](https://guides.github.com/features/mastering-markdown/)
-[String to datetime in Python](https://www.journaldev.com/23365/python-string-to-datetime-strptime)
-[Elastic Search Indexing in Python](https://qbox.io/blog/building-an-elasticsearch-index-with-python)
-```
+- [Argument Parsing in Python](https://pymotw.com/2/argparse/)
+- [Working with JSON in Python](https://realpython.com/python-json/)
+- [Mastering Github Markdown](https://guides.github.com/features/mastering-markdown/)
+- [String to datetime in Python](https://www.journaldev.com/23365/python-string-to-datetime-strptime)
+- [Elastic Search Indexing in Python](https://qbox.io/blog/building-an-elasticsearch-index-with-python)
