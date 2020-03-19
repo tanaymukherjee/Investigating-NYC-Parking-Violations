@@ -193,6 +193,7 @@ cat results.json | wc -l  && cat results.json
 
 - [x] This module is completed
 
+
 ## Part 2: Loading into ElasticSearch
 ```
 In this second part, we want to leverage docker-compose to bring up a service that encapsulates our bigdata1 container and an  elasticsearch container and ensures that they are able to interact. 
@@ -248,7 +249,7 @@ NOTE: Remember, docker-compose. yml files are used for defining and running mult
 This is our main output which shows the json output we have called from the API.
 It will store as many rows we pass as part of our arguments - num_pages and pages_size.
 It is located in the root directory of our project.
-This is a sample to the 1 million records we will try to push into elastic searcg later.
+This is a sample to the 1 million records we will try to push into elastic search later.
 ```
 
 ### C) Commands
@@ -362,6 +363,7 @@ curl -o output.txt http://<docker's ip>:9200/bigdata1/_search?q=state:NY&size=5
 
 - [x] This module is completed
 
+
 ## Part 3: Visualizing and Analysis on Kibana
 ```
 Kibana is an open source data visualization dashboard for Elasticsearch. It provides visualization capabilities on top of the content indexed on an Elasticsearch cluster. Users can create bar, line and scatter plots, or pie charts and maps on top of large volumes of data. Fianlly all the visualizations can be together put up as a dashboard
@@ -430,10 +432,77 @@ docker-compose run -e APP_TOKEN=<api_token> pyth python main.py --page_size=1000
 #### 4. Deploying via Docker Hub:
 * ```Link to the docker hub for part 2 and part3```
 ```
-https://hub.docker.com/repository/docker/tanaydocker/pyth
+[]https://hub.docker.com/repository/docker/tanaydocker/pyth
 ```
 
 - [x] This module is completed
 
+
 ## Part 4: Deploying to EC2 Instance
 - [ ] This module is yet to be started and is optional
+
+
+## Appendix
+```
+All the additional info about the project - the tools used, the servers required, system configuration, references, etc are included in this section.
+```
+
+### A) Project Specifications
+
+#### 1. Application Summary
+* ```System Specification:```
+``` 
+Operating System: Windows 10
+RAM Size: 16 GB
+Memory: 500 GB
+```
+
+* ```Tools Used:```
+``` 
+Programming Language: Python (Version 3.7)
+Editor: Sublime Text (Version 3)
+Platform: Docker Desktop (Version 2.2.0.3)
+Shell: Git Bash
+```
+
+* ```Services Commisioned:```
+``` 
+Cloud Platform: Amazon Web Services (AWS)
+Database Engine: Elastic Search (NoSQL distributive system)
+Visulization Tool: Kibana
+Version Control System: Git
+```
+
+#### 2. Communication Channel
+* ```Offline:```
+``` 
+Classrom: Room 10-155
+Timing: Friday, 1800 to 2100 Hours
+Address: Baruch Vertical Campus,
+55, Lexington Avenue,
+New York, USA
+```
+
+* ```Online:```
+``` 
+Slack: STA9760
+Members: 53
+```
+
+### B) References
+
+#### 1. Guide
+* ```Prof. Taqqui Karim```
+``` 
+Subject: 9760 - Big Data Technologies
+Session: Spring, 2020
+```
+
+#### 2. Links
+``` 
+[Argument Parsing in Python](https://pymotw.com/2/argparse/)
+[Working with JSON in Python](https://realpython.com/python-json/)
+[Mastering Github Markdown](https://guides.github.com/features/mastering-markdown/)
+[String to datetime in Python](https://www.journaldev.com/23365/python-string-to-datetime-strptime)
+[Elastic Search Indexing in Python](https://qbox.io/blog/building-an-elasticsearch-index-with-python)
+```
