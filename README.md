@@ -264,6 +264,7 @@ docker system prune -a
 docker-machine rm default
 docker-machine create -d virtualbox --virtualbox-cpu-count=2 --virtualbox-memory=4096 --virtualbox-disk-size=50000 default
 docker-machine stop
+exit
 ```
 * ```Set up the necessary JVM heap memory for the Elastic Search```
 ```
@@ -462,14 +463,14 @@ Memory: 500 GB
 Programming Language: Python (Version 3.7)
 Editor: Sublime Text (Version 3)
 Platform: Docker Desktop (Version 2.2.0.3)
-Shell: Git Bash
+Shell: Git Bash (Version 2.25.1)
 ```
 
-* ```Services Commisioned:```
+* ```Services Commissioned:```
 ``` 
 Cloud Platform: Amazon Web Services (AWS)
 Database Engine: Elastic Search (NoSQL distributive system)
-Visulization Tool: Kibana
+Visualization Tool: Kibana
 Version Control System: Git
 ```
 
@@ -504,3 +505,4 @@ Session: Spring, 2020
 - [Mastering Github Markdown](https://guides.github.com/features/mastering-markdown/)
 - [String to datetime in Python](https://www.journaldev.com/23365/python-string-to-datetime-strptime)
 - [Elastic Search Indexing in Python](https://qbox.io/blog/building-an-elasticsearch-index-with-python)
+- [Elastic Search Via Curl](https://okfnlabs.org/blog/2013/07/01/elasticsearch-query-tutorial.html#curl-or-browser)
