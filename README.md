@@ -439,10 +439,6 @@ https://hub.docker.com/repository/docker/tanaydocker/pyth
 - [x] This module is completed
 
 
-## Part 4: Deploying to EC2 Instance
-- [ ] This module is yet to be started and is optional
-
-
 ## Appendix
 ```
 All the additional info about the project - the tools used, the servers required, system configuration, references, etc are included in this section.
